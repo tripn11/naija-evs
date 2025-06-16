@@ -10,17 +10,14 @@ const Navbar = () => {
       <nav>
         <NavLink to="/" activeClassName="active">Home</NavLink>
         <NavLink to="#" activeClassName="active">Explore</NavLink>
+        <NavLink to="/mission" activeClassName="active">Our Mission</NavLink>
       </nav>
 
       <nav>
-        <Link to="/cars">Electric Cars</Link>
-        <Link to="/buses">Electric Buses</Link>
-        <Link to="/tricycle">Electric Tricycles</Link>
-        <Link to="/motorcycles">Electric Motorcycles</Link>
-        <Link to="/bikes">Electric Bikes</Link>
-        <Link to="/monocycles">Electric Monocycles</Link>
-        <Link to="/drones">Drones</Link>
-      </nav> 
+        <Link to="/vehicles/cars">Electric Cars</Link>
+        <Link to="/vehicles/tricycles">Electric Tricycles</Link>
+        <Link to="/vehicles/motorcycles">Electric Motorcycles</Link>
+      </nav>
     </header>
   );
 };
