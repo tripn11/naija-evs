@@ -1,47 +1,93 @@
+import { useEffect, useRef, useState } from 'react';
 import greenEarth from '../assets/green earth.jpg';
 import charging from '../assets/car.jpg';
 import acceleration from '../assets/acceleration.jpg';
 import elegance from '../assets/interior.jpg';
+import vid1 from '../assets/1.mp4';
 
 const Mission = () => {
+  const elementRefs = useRef([]);
+  const [purpose, setPurpose] = useState('')
+  const purposeStatement = "Our Journey into electric mobility wasn't just a business move — it was a conscious decision rooted in sustainability, innovation, and a desire to shape a cleaner, smarter future.";
+  const [index,setIndex] = useState(0)
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(()=>{entry.target.classList.add('in-view')},1500);
+          observer.unobserve(entry.target);
+        }
+      });
+    }
+    ,{
+        root: null,
+        rootMargin: '-5% 0px', 
+      }
+    );
+
+    elementRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (index < purposeStatement.length) {
+      const timeout = setTimeout(() => {
+        setPurpose((prev) => prev + purposeStatement[index]);
+        setIndex(index + 1);
+      }, 30); 
+
+      return () => clearTimeout(timeout);
+    }
+  }, [index, purposeStatement]);
+
+
+
   return (
-    <main>
+    <div id='mission'>
       <section>
-        <h2>Why We Chose Electric</h2>
-        <p>
-          Our journey into electric mobility wasn't just a business move — it was a
-          conscious decision rooted in sustainability, innovation, and a desire to shape a cleaner, smarter future.
-        </p>
+        <video autoPlay muted loop playsInline>
+          <source src={vid1} type='video/mp4' />
+          Your browser does not support the video tag
+        </video>
+        <div>
+          <h2>Why Electric?</h2>
+          <p>
+            {purpose}
+          </p>
+        </div>
       </section>
 
       <section>
-        <article>
-          <img src={greenEarth} alt="Green Earth" />
-          <h3>Zero Emissions</h3>
-          <p>Reduce your carbon footprint and help build a healthier planet for future generations.</p>
-        </article>
-
-        <article>
-          <img src={charging} alt="Charging" />
-          <h3>Cost-Effective</h3>
-          <p>Forget fuel queues. EVs cost less to run, especially when charged with solar power.</p>
-        </article>
-
-        <article>
-          <img src={acceleration} alt="Performance" />
-          <h3>Instant Performance</h3>
-          <p>Feel the thrill of instant torque and responsive acceleration — every ride is a smooth rush.</p>
-        </article>
-
-        <article>
-          <img src={elegance} alt="Elegance" />
-          <h3>Elegant by Design</h3>
-          <p>EVs combine silence and sophistication with interiors and designs that command attention.</p>
-        </article>
+        {[{
+          img: greenEarth,
+          title: 'Zero Emissions',
+          text: 'Reduce your carbon footprint and help build a healthier planet for future generations.'
+        }, {
+          img: charging,
+          title: 'Cost-Effective',
+          text: 'Forget fuel queues. EVs cost less to run, especially when charged with solar power.'
+        }, {
+          img: acceleration,
+          title: 'Instant Performance',
+          text: 'Feel the thrill of instant torque and responsive acceleration — every ride is a smooth rush.'
+        }, {
+          img: elegance,
+          title: 'Elegant by Design',
+          text: 'EVs combine silence and sophistication with interiors and designs that command attention.'
+        }].map((item, index) => (
+          <article key={index}>
+            <div></div>
+            <img src={item.img} alt={item.title} />
+            <h3 ref={(el) => (elementRefs.current[index * 2] = el)}>{item.title}</h3>
+            <p ref={(el) => (elementRefs.current[index * 2 + 1] = el)}>{item.text}</p>
+          </article>
+        ))}
       </section>
-    </main>
+    </div>
   );
 };
 
 export default Mission;
-// This component is responsible for displaying the mission and values of the electric vehicle company.

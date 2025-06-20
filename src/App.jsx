@@ -1,4 +1,4 @@
-import './App.css';
+// import React, {Suspense} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -8,20 +8,24 @@ import VehicleType from './components/VehicleType';
 import Vehicle from './components/Vehicle';
 import Order from './components/Order';
 import TestDrive from './components/TestDrive';
+import Support from './components/Support';
 
 
 const App = () => {
+
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/mission" element={<Mission />} />
-        <Route path="/vehicles/:type" element={<VehicleType />} />
-        <Route path="/vehicles/:type/:name" element={<Vehicle />} />
-        <Route path="/order/:id" element={<Order />} />
-        <Route path="/test-drive/:id" element={<TestDrive />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/mission" element={<Mission />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/vehicles/:type" element={<VehicleType />} />
+          <Route path="/vehicles/:type/:name" element={<Vehicle />} />
+          <Route path="/order/:id" element={<Order />} />
+          <Route path="/test-drive/:id" element={<TestDrive />} />
+        </Routes>
       <Footer />
     </Router>
   );

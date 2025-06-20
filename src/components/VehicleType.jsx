@@ -19,12 +19,12 @@ const VehicleType = () => {
             brand.vehicleType &&
             brand.vehicleType.name &&
             brand.vehicleType.name.toLowerCase() === type.toLowerCase()
-        );
+        ).sort((a,b)=>a.name.localeCompare(b.name));
         setBrands(filteredBrands);
       } catch (error) {
         console.error('Error fetching brands:', error);
       } finally {
-        setLoading(false);
+        setTimeout(()=>setLoading(false),1000);
       }
     };
 
@@ -40,7 +40,7 @@ const VehicleType = () => {
   }
 
   return (
-    <div>
+    <div className='brands-container'>
       {brands.map(brand => (
         <Brand key={brand.id} brand={brand} />
       ))}

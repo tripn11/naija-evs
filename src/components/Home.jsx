@@ -2,22 +2,34 @@ import hero1 from '../assets/hero1.jpg';
 import hero2 from '../assets/hero2.jpg';
 import hero3 from '../assets/hero3.jpg';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-const Home = () => { 
+const images = [hero1, hero2, hero3];
+
+const Home = () => {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 5000); 
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <main>
-      <img src={hero1} alt="Hero 1" />
-      <img src={hero2} alt="Hero 2" />
-      <img src={hero3} alt="Hero 3" />
+    <main className="home-hero">
+      <div
+        className="hero-bg"
+        style={{
+          backgroundImage: `url(${images[current]})`,
+        }}
+      ><div className='dark-overlay'></div></div>
       <h2>Drive the Future Today</h2>
       <p>
         Experience the thrill of electric driving with our range of high performance EVs.
         Sustainable, stylish and ready for you.
       </p>
-      <Link to="/cars">
-        <button>Explore Models</button>
-      </Link>
-      <button>Book a Test Drive</button>
+      <Link to="/vehicles/cars" className='button-link'>Explore Models</Link>
     </main>
   );
 };

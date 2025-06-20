@@ -7,16 +7,37 @@ const VehicleWrap = ({ vehicle }) => {
     navigate(`/vehicles/${vehicle.vehicleType.name}/${vehicle.model}`,
        { state: { vehicle } });
   };
+
+  const formatNaira = (price) => {
+    const numericPrice = parseFloat(price);
+
+    if (isNaN(numericPrice)) {
+      return 'Invalid Price';
+    }
+
+    const formatter = new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+      maximumFractionDigits:0,
+    });
+
+    return formatter.format(numericPrice);
+  }
+
+  const vehiclePrice = formatNaira(vehicle.price);
+
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} className='vehicle-wrap'>
       <img
         src={
           `${import.meta.env.VITE_API_URL}${vehicle.images[0]?.thumbnailURL}`}
         alt={vehicle.name}
         loading="lazy"
       />
-      <h3>{vehicle.model}</h3>
-      <p>{vehicle.year}</p>
+      <div>
+        <span>{`${vehicle.year} ${vehicle.model}`}</span>
+        <span>{vehiclePrice}</span>
+      </div>
     </div>
   );
 };

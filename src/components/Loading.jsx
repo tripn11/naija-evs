@@ -1,7 +1,1 @@
-export default () => {
-    return (
-        <div>
-            <p>Loading...</p>
-        </div>
-    )
-}
+export default () => <div className="loader"></div>

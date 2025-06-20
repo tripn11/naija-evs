@@ -1,0 +1,195 @@
+$button-color:#2b7a78;
+
+.vehicle {
+    position: relative;
+    margin-top: 8vh;
+    width: 100%;
+    padding-bottom: 5rem;
+    background-color: whitesmoke;
+
+    >div:first-child {
+        position: relative;
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: 63vw;
+
+        }
+        ion-icon{
+            position: absolute;
+            top: 50%;
+            font-size: 1.5rem;
+            color: white;
+            padding: 0.5rem;
+
+            &:hover {
+                color: grey;
+            }
+        }
+        #prev {
+            left: 3%;
+        }
+        #next {
+            right: 3%;
+        }
+        .guide {
+            position: absolute;
+            left: 50%;
+            bottom: 10%;
+            display: flex;
+            flex-direction: row;
+            gap: 0.3rem;
+
+            div {
+                background-color: grey;
+                height: 0.5rem;
+                width: 0.5rem;
+                border: none;
+                border-radius: 50%;
+
+                &.active {
+                    background-color: white;
+                }
+            }
+
+        }
+    }
+    .model,.price {
+        font-weight: bold;
+        text-align:right;
+        background-color:  whitesmoke;
+        padding: 0.3rem;
+    }
+
+    .overview {
+        padding-left: 1rem;
+        background-color: whitesmoke;
+
+        >div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+
+            >div {
+                display:flex;
+                flex-direction: column-reverse;
+                margin:0.5rem 0;
+                flex: 0 0 calc(50% - 10px);
+                text-align: left;
+                padding: 1rem;
+                box-shadow: 0 0.1px 0.3px 0.2px gray;
+            }
+
+
+            span:first-child {
+                color: gray;
+            }
+        }
+    }
+
+    >div:last-child {
+        button {
+            display: block;
+            border:1px solid $button-color;
+            border-radius: 1000px;
+            padding: 0.8rem;
+            width: 80vw;
+            margin: 1rem auto;
+            cursor: pointer;
+            transition: background-color 0.5s, color 0.5s ;
+
+        }
+
+        button:first-child {
+            background-color: whitesmoke;
+
+
+            &:hover {
+                background-color: $button-color;
+                color: white;
+            }
+        }
+
+        button:last-child {
+            background-color: $button-color;
+            color: white;
+
+            &:hover {
+                background-color: white; 
+                color: black; 
+            }
+        }
+
+    }
+
+    @media (min-width: 768px) {
+        .model,.price {
+            padding-right: 2rem;
+        }
+        .price {
+            box-shadow: 0 0.2px 0.5px grey;
+        }
+    } 
+
+    @media (min-width: 1000px) {
+        div:first-child {
+            ion-icon {
+                font-size: 3rem;
+            }
+        }
+        .overview {
+            width: 70%;
+            display: block;
+            margin: 2rem auto;
+            padding-left: 5rem;
+            
+            h3{
+                padding-left: 1rem;
+                font-size: 1.5rem;
+            }
+        }
+
+        >div:last-child > button {
+            border-width: 2px;
+            max-width: 40%;
+            position: relative;
+            background-color: transparent;
+            overflow: hidden;
+            z-index: 1;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 101%;
+                height: 100%;
+                background-color: $button-color;
+                transform: translateX(-100%);
+                transition: all .5s;
+                z-index: -1;
+            }
+
+            &:last-child {
+                background-color: whitesmoke;
+                color: black;
+
+                &:hover {
+                    color: whitesmoke;
+                    font-weight: bold;
+                }
+            }
+
+            &:hover::before {
+                transform: translateX(0);
+                color: whitesmoke;
+            }
+
+
+        }  
+    } 
+}

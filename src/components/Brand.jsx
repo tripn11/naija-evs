@@ -34,11 +34,13 @@ const Brand = ({ brand }) => {
   }
 
   return (
-    <div>
+    <div className='brand'>
       <h2>{brand.name}</h2>
-      {vehicles.map(vehicle => (
+      <div className='brand-vehicles'>
+        {vehicles.map(vehicle => (
         <VehicleWrap key={vehicle.id} vehicle={vehicle} />
       ))}
+      </div>
     </div>
   );
 };
