@@ -2,7 +2,12 @@
   position: relative;
   width: 120px;
   height: 90px;
-  margin: 50% auto;
+  margin: 15rem auto;
+  scale: 0.5;
+
+  @media (min-width:600px) {
+    scale:0.6;
+  }
 }
 
 .loader:before {

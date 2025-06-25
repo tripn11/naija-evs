@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import greenEarth from '../assets/green earth.jpg';
-import charging from '../assets/car.jpg';
-import acceleration from '../assets/acceleration.jpg';
-import elegance from '../assets/interior.jpg';
-import vid1 from '../assets/1.mp4';
+import greenEarth from '../assets/mission/green earth.jpg';
+import charging from '../assets/mission/car.jpg';
+import acceleration from '../assets/mission/acceleration.jpg';
+import elegance from '../assets/mission/interior.jpg';
+import vid1 from '../assets/mission/1.mp4';
 
 const Mission = () => {
   const elementRefs = useRef([]);
@@ -14,7 +14,7 @@ const Mission = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setTimeout(()=>{entry.target.classList.add('in-view')},1500);
+          setTimeout(()=>{entry.target.classList.add('in-view')},500);
           observer.unobserve(entry.target);
         }
       });

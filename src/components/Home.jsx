@@ -1,6 +1,6 @@
-import hero1 from '../assets/hero1.jpg';
-import hero2 from '../assets/hero2.jpg';
-import hero3 from '../assets/hero3.jpg';
+import hero1 from '../assets/home/hero1.jpg';
+import hero2 from '../assets/home/hero2.jpg';
+import hero3 from '../assets/home/hero3.jpg';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 

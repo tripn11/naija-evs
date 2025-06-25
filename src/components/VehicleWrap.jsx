@@ -4,7 +4,7 @@ const VehicleWrap = ({ vehicle }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/vehicles/${vehicle.vehicleType.name}/${vehicle.model}`,
+    navigate(`/vehicles/${vehicle.vehicle_type.name}/${vehicle.model}`,
        { state: { vehicle } });
   };
 

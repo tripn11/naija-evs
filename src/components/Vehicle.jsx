@@ -7,24 +7,40 @@ const Vehicle = () => {
   const vehicle = location.state?.vehicle;
   const [images, setImages] = useState([]); 
   const [currentImage, setCurrentImage] = useState(0);
-  const [overview, setOverview] = useState([])
 
   useEffect (()=>{
     setImages([...vehicle.images])
-    const keys = Object.keys(vehicle.overview)
-    .map(each=>{
-      const capitalized = each.charAt(0).toUpperCase()+each.slice(1)
-      return capitalized.replace("_"," ")
-    })
-
-    setOverview(keys)
   },[])
 
-  if (!vehicle) return <div>Vehicle data not found.</div>;
+
+  const overviewIcons = {
+    "fuel_type": { icon: 'flash', color: '#ffa502' },
+    // "fuel_type": { icon: 'flash-outline', color: '#ff6b6b' },
+    "body_style": { icon: 'car-outline', color: '#1e90ff' },
+    "dimensions(mm)": { icon: 'expand-outline', color: '#ffa502' },
+    condition: { icon: 'build-outline', color: '#2ed573' },
+    seats: { icon: 'people-outline', color: '#3742fa' },
+    "seat_technology": { icon: 'square-outline', color: '#5352ed' },
+    "sound_system": { icon: 'musical-notes-outline', color: '#ff7f50' },
+    ambiance: { icon: 'color-palette-outline', color: '#eccc68' },
+    "charging_speed": { icon: 'battery-charging-outline', color: '#70a1ff' },
+    "bidirectional_charging": { icon: 'swap-horizontal-outline', color: '#2f3542' },
+    safety: { icon: 'shield-checkmark-outline', color: '#2ed573' },
+    assistance: { icon: 'accessibility-outline', color: '#1e90ff' },
+    'power_output(hp)': { icon: 'speedometer-outline', color: '#ff4757' },
+    'battery_capacity(kwh)': { icon: 'battery-half', color: '#3742fa' },
+    'range(km)': { icon: 'map-outline', color: '#ffa502' },
+    drivetrain: { icon: 'cog-outline', color: '#a29bfe' },
+    'top_speed(km/h)': { icon: 'rocket-outline', color: '#ff6b81' },
+    'acceleration(0-100)s': { icon: 'timer-outline', color: '#00b894' },
+  };
+
+
 
   const handleOrderNow = () => {
-    navigate(`/order/${vehicle.id}`, {
+    navigate(`/order`, {
       state: {
+        purpose: 'place an order',
         model: vehicle.model,
         year: vehicle.year,
         price: vehicle.price,
@@ -33,8 +49,9 @@ const Vehicle = () => {
   };
 
   const handleTestDrive = () => {
-    navigate(`/test-drive/${vehicle.id}`, {
+    navigate(`/test-drive`, {
       state: {
+        purpose:'book a test drive',
         model: vehicle.model,
         year: vehicle.year,
       },
@@ -68,7 +85,11 @@ const Vehicle = () => {
 
     return formatter.format(numericPrice);
   }
+
   const vehiclePrice = formatNaira(vehicle.price);
+
+  if (!vehicle) return <div>Vehicle data not found.</div>;
+
   return (
     <div className='vehicle'>
       <div>
@@ -85,18 +106,35 @@ const Vehicle = () => {
       </div>
       <h3 className='model'>{vehicle.year} {vehicle.model}</h3>
       <div className='price'>{vehiclePrice}</div>
+
       <div className='overview'>
         <h3>Overview</h3>
-        <div>
-          {Object.keys(vehicle.overview)
-          .map((each, index) =>
-          (<div key={each}>
-            <span>{overview[index]}</span>
-            <span>{typeof(vehicle.overview[each])==='string'?
-            vehicle.overview[each].charAt(0).toUpperCase() + vehicle.overview[each].slice(1):vehicle.overview[each]}</span>
-          </div>))}
+        <div className='overview-grid'>
+          {Object.entries(vehicle.overview)
+          .filter(([_, value]) => value !== '' && value !== null && value !== undefined)
+          .map(([key, value]) => {
+            const icon = overviewIcons[key];
+            const label = key
+            .replace(/_/g, ' ')
+            .replace(/\b\w/g, c => c.toUpperCase());
+
+          return (
+            <div className='overview-item' key={key}>
+            {icon && <ion-icon name={icon.icon} style={{ color: icon.color }} ></ion-icon>}
+              <div>
+                <strong>
+                  {typeof value === 'string'
+                  ? value.charAt(0).toUpperCase() + value.slice(1)
+                  : value}
+                </strong>
+                <div>{label}</div>
+              </div>
+            </div>
+          );
+          })}
         </div>
       </div>
+
       <div>
         <button onClick={handleTestDrive}>Book a Test Drive</button>
         <button onClick={handleOrderNow}>Order Now</button>

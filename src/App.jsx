@@ -1,4 +1,3 @@
-// import React, {Suspense} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -6,9 +5,9 @@ import Home from './components/Home';
 import Mission from './components/Mission';
 import VehicleType from './components/VehicleType';
 import Vehicle from './components/Vehicle';
-import Order from './components/Order';
-import TestDrive from './components/TestDrive';
 import Support from './components/Support';
+import FAQ from './components/FAQ';
+import ContactForm from './components/ContactForm';
 
 
 const App = () => {
@@ -21,10 +20,14 @@ const App = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/mission" element={<Mission />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/support/maintenance" element={<ContactForm />} /> 
+          <Route path="/support/installation" element={<ContactForm />} />
+          <Route path="/support/faq" element={<FAQ />} />
           <Route path="/vehicles/:type" element={<VehicleType />} />
           <Route path="/vehicles/:type/:name" element={<Vehicle />} />
-          <Route path="/order/:id" element={<Order />} />
-          <Route path="/test-drive/:id" element={<TestDrive />} />
+          <Route path="/order" element={<ContactForm />} />
+          <Route path="/test-drive" element={<ContactForm />} />
+
         </Routes>
       <Footer />
     </Router>

@@ -3,6 +3,7 @@
     background-color: black;
     color: white;
     font-size: 0.7rem;
+    position: relative;
 
     section:first-child {
         position:relative;
@@ -25,6 +26,7 @@
 
             p {
                 line-height: 1.2rem;
+                font-family: 'Courier New', Courier, monospace;
             }
         }
     }
@@ -52,6 +54,7 @@
                 opacity: 0;
                 transform: translateX(-30px);
                 transition: opacity 2s ease-out, transform 1s ease-out;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
                 &.in-view {
                     opacity: 1;
@@ -147,6 +150,8 @@
     }
 
     @media (min-width: 1000px) {
+    top: 8vh;
+
         section:first-child {
             div {
                 padding-left: 10rem;
