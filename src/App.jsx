@@ -8,6 +8,7 @@ import Vehicle from './components/Vehicle';
 import Support from './components/Support';
 import FAQ from './components/FAQ';
 import ContactForm from './components/ContactForm';
+import NotFound from './components/NotFound';
 
 
 const App = () => {
@@ -27,7 +28,7 @@ const App = () => {
           <Route path="/vehicles/:type/:name" element={<Vehicle />} />
           <Route path="/order" element={<ContactForm />} />
           <Route path="/test-drive" element={<ContactForm />} />
-
+          <Route path="*" element={<NotFound />} />
         </Routes>
       <Footer />
     </Router>

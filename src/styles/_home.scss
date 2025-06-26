@@ -53,8 +53,8 @@ main.home-hero {
 
   a {
     width: 50%;
-    left: 30%;
     max-width: 20rem;
+    min-width: 12rem;
   }
 
   @media (min-width: 860px) {
@@ -79,7 +79,7 @@ main.home-hero {
     height: 84.5vh;
     h2 {
       font-size: 3rem;
-      margin-bottom: 8.5rem;
+      margin-bottom: 5.5rem;
     }
 
     p {
