@@ -38,7 +38,7 @@ const Navbar = () => {
         <NavLink to="/"  onClick={handleMenuToggle} className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
         <label  onClick={subMenuSetter}  className={`${subMenuOpen?'active':''}`}><span>Explore</span><span><ion-icon name="chevron-down-outline"></ion-icon></span></label>
         <div id='submenu' className={`${subMenuOpen ? ' open' : ''} `}>
-          <Link to="/vehicles/cars" onClick={handleMenuToggle}>Electric Cars</Link>
+          <Link to="#" onClick={handleMenuToggle}>Electric Cars</Link>
           <Link to="#" onClick={handleMenuToggle}>Electric Tricycles</Link>
           <Link to="#" onClick={handleMenuToggle }>Electric Motorcycles</Link>
         </div>
