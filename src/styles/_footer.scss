@@ -2,11 +2,7 @@ $footer-color: #c4c2c2;
 $footer-bg: #181c23;
 
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 10vh;
+  height: 4rem;
   background: $footer-bg;
   color: $footer-color;
   display: flex;
@@ -14,12 +10,13 @@ footer {
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
-  gap: 0.2rem;
+  // gap: 0.2rem;
   z-index: 1000;
+  overflow-y: hidden;
+  padding-top: 0.5rem;
 
   p {
     text-align: center;
-    margin: 0;
   }
 
   div {

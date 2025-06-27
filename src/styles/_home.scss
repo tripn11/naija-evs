@@ -28,7 +28,7 @@ main.home-hero {
     position: relative;
     z-index: 2;
     width: 90%;
-    top:20vh;
+    top:18vh;
     left: 50%;
     transform: translateX(-50%);
     color: #fff;
@@ -49,6 +49,7 @@ main.home-hero {
     text-shadow: 0 2px 8px rgba(0,0,0,0.18);
     margin-bottom: 4.5rem;
     text-align: left;
+    line-height: 1.5rem;
   }
 
   a {
@@ -68,6 +69,7 @@ main.home-hero {
 
     p{
       font-size: 1.5rem;
+      line-height: 2rem;
     }
 
     a{
@@ -85,6 +87,7 @@ main.home-hero {
     p {
       font-size: 1.5rem;
       width: 60%;
+      line-height: 2.5rem;
     }
 
     a {
