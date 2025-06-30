@@ -51,8 +51,7 @@ const Home = () => {
         Experience the thrill of electric driving with our range of high performance EVs.
         Sustainable, stylish and ready for you.
       </p>
-      <Link to="#" className="button-link">
-      {/* <Link to="/vehicles/cars" className="button-link"> */}
+      <Link to="/vehicles/cars" className="button-link">
         Explore Models
       </Link>
     </main>

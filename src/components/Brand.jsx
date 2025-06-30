@@ -12,7 +12,7 @@ const Brand = ({ brand }) => {
       try {
         const apiUrl = import.meta.env.VITE_API_URL;
         const response = await axios.get(
-          `${apiUrl}/api/vehicles?where[brand][equals]=${brand.id}`
+          `${apiUrl}/api/vehicles?where[brand][equals]=${brand.id}&depth=1`
         );
         setVehicles(response.data.docs); 
       } catch (error) {
@@ -32,6 +32,7 @@ const Brand = ({ brand }) => {
   if (!vehicles.length) {
     return null;
   }
+
 
   return (
     <div className='brand'>

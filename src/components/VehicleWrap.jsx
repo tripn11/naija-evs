@@ -29,8 +29,7 @@ const VehicleWrap = ({ vehicle }) => {
   return (
     <div onClick={handleClick} className='vehicle-wrap'>
       <img
-        src={
-          `${import.meta.env.VITE_API_URL}${vehicle.images[0]?.thumbnailURL}`}
+        src={vehicle.images[0]?.thumbnailURL}
         alt={vehicle.name}
         loading="lazy"
       />

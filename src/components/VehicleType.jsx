@@ -39,6 +39,7 @@ const VehicleType = () => {
     return <p>No Vehicles in this category</p>;
   }
 
+
   return (
     <div className='brands-container'>
       {brands.map(brand => (
