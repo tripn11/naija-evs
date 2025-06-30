@@ -15,6 +15,7 @@ const Brand = ({ brand }) => {
           `${apiUrl}/api/vehicles?where[brand][equals]=${brand.id}&depth=1`
         );
         setVehicles(response.data.docs); 
+        console.log(response.data.docs);
       } catch (error) {
         console.error('Error fetching vehicles:', error);
       } finally {
