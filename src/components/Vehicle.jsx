@@ -54,6 +54,8 @@ const Vehicle = () => {
     }
   }, [vehicle]);
 
+  console.log(images);
+
   const handleOrderNow = () => {
     navigate(`/order`, {
       state: {
@@ -103,10 +105,19 @@ const Vehicle = () => {
     <div className='vehicle'>
       <div>
         {images.length > 0 && (
-          <img
-            src={images[currentImage]?.url}
-            alt={images[currentImage]?.alt}
-          />
+          <>
+            {images[currentImage]?.mimeType?.startsWith('video') ? (
+              <video
+                src={images[currentImage].url}
+                controls
+              />
+            ) : (
+              <img
+                src={images[currentImage]?.url}
+                alt={images[currentImage]?.alt}
+              />
+            )}
+          </>
         )}
         <ion-icon name="chevron-forward-outline" id='next' onClick={() => imageChanger('next')}></ion-icon>
         <ion-icon name="chevron-back-outline" id='prev' onClick={() => imageChanger('prev')}></ion-icon>

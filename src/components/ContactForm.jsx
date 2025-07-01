@@ -68,8 +68,8 @@ export default () => {
       <input type="text" name="name" placeholder="Full Name" value={form.name} onChange={handleChange} required />
       <input type="tel" name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} required />
       <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
-      <input type="date" name="date" value={form.date} onChange={handleChange} required />
-      <input type="time" name="time" value={form.time} onChange={handleChange} required />
+      <input type="date" name="date" value={form.date || ""} onChange={handleChange} required />
+      <input type="time" name="time" value={form.time || ""} onChange={handleChange} required />
 
       {(props.purpose === 'install a charger' || props.purpose === 'request maintenance') && (
         <input type="text" name="location" placeholder="Location" value={form.location} onChange={handleChange} required />

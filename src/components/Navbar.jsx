@@ -1,10 +1,11 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useState } from 'react';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleMenuToggle = () => {
     setMenuOpen(prevState => !prevState);
@@ -15,11 +16,15 @@ const Navbar = () => {
     setSubMenuOpen(prevState => !prevState)
   };
 
+  const goHome = () => {
+    navigate('/');
+  }
+
   return (
     <header>
       <div>
         <div id="logo">
-          <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" onClick={goHome} />
           <span>ENERPLAZ EVS</span>
         </div>
         <label className="hamburger">
