@@ -36,7 +36,7 @@ const VehicleType = () => {
   }
 
   if (brands.length === 0) {
-    return <p>No Vehicles in this category</p>;
+    return <div className='brands-container'><p>No Vehicles in this category</p></div>;
   }
 
 

@@ -1,1 +1,1 @@
-export default () => <div className="loader"></div>
+export default () => <div className="loader-container"><div className="loader"></div></div>
