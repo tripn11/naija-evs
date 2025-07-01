@@ -21,7 +21,6 @@ const VehicleType = () => {
             brand.vehicleType.name.toLowerCase() === type.toLowerCase()
         ).sort((a,b)=>a.name.localeCompare(b.name));
         setBrands(filteredBrands);
-        console.log(filteredBrands);
       } catch (error) {
         console.error('Error fetching brands:', error);
       } finally {
